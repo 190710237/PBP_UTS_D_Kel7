@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +12,6 @@ import com.example.uts_pbp_d_kel7.Database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.Model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout etFirstname, etLastname, etEmail;
