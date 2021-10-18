@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_PBP_D_Kel7">
         <activity
-            android:name="com.example.uts_pbp_d_kel7.LoginActivity"
+            android:name=".IsiSubBabActivity"
+            android:exported="true" />
+        <activity
+            android:name=".IsiMateriActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.uts_pbp_d_kel7.RegisterActivity"
-            android:exported="true">
-        </activity>
+            android:name=".RegisterActivity"
+            android:exported="true" />
         <activity
-            android:name="com.example.uts_pbp_d_kel7.MainActivity"
-            android:exported="true">
-        </activity>
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
