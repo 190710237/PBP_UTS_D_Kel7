@@ -6,14 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IsiSubBabActivity">
-    <TextView
-        android:id="@+id/tv_matapelajaran"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="nama mata pelajaran" />
-    <androidx.recyclerview.widget.RecyclerView
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_sub_bab"
-        tools:listitem="@layout/rv_item_sub_bab"/>
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/white"
+                    app:iconTint="@color/white"
+                    app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+                    android:text="Back"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_marginTop="20dp"
+                    android:text="Course Name"
+                    android:textColor="@color/white"
+                    android:textAppearance="?attr/textAppearanceHeadline4"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:textAlignment="center"
+                    android:text="Course Description"
+                    android:textColor="@color/white"
+                    android:textAppearance="?attr/textAppearanceBody1"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Note: A RecyclerView can also be used -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_sub_bab"
+                tools:listitem="@layout/rv_item_sub_bab"/>
+
+            <!-- Scrollable content -->
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </LinearLayout>

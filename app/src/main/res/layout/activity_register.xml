@@ -11,7 +11,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:text="Register"
+        android:textAppearance="?attr/textAppearanceHeadline3"
+        android:textColor="@color/purple_500"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -40,6 +42,7 @@
             android:id="@+id/etLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Last Name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -53,6 +56,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Email"
             app:startIconDrawable="@drawable/ic_baseline_mail_outline_24"
             app:startIconContentDescription="email">
@@ -68,6 +72,7 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Username"
             app:startIconDrawable="@drawable/ic_baseline_person_outline_24"
             app:startIconContentDescription="Username">
@@ -83,6 +88,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Password"
             app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
             app:endIconMode="password_toggle"
@@ -100,6 +106,7 @@
             android:id="@+id/etConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Confirm Password"
             app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
             app:endIconMode="password_toggle"
@@ -117,6 +124,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:text="Register" />
 
