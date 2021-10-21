@@ -1,9 +1,9 @@
-package com.example.uts_pbp_d_kel7.Preferences;
+package com.example.uts_pbp_d_kel7.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.uts_pbp_d_kel7.Model.User;
+import com.example.uts_pbp_d_kel7.model.User;
 
 public class UserPreferences {
     SharedPreferences sharedPreferences;

@@ -1,4 +1,4 @@
-package com.example.uts_pbp_d_kel7.Model;
+package com.example.uts_pbp_d_kel7.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -12,6 +12,12 @@ public class Materi {
     @ColumnInfo(name="mataPelajaran")
     private String mataPelajaran;
 
+    @ColumnInfo(name="author")
+    private String author;
+
+    @ColumnInfo(name="tingkatan")
+    private String tingkatan;
+
     @ColumnInfo(name="bab")
     private int bab;
 
@@ -21,8 +27,10 @@ public class Materi {
     @ColumnInfo(name="isiMateri")
     private String isiMateri;
 
-    public Materi(String mataPelajaran, int bab, String namaBab, String isiMateri) {
+    public Materi(String mataPelajaran, String author, String tingkatan, int bab, String namaBab, String isiMateri) {
         this.mataPelajaran = mataPelajaran;
+        this.author = author;
+        this.tingkatan = tingkatan;
         this.bab = bab;
         this.namaBab = namaBab;
         this.isiMateri = isiMateri;
@@ -66,5 +74,21 @@ public class Materi {
 
     public void setNamaBab(String namaBab) {
         this.namaBab = namaBab;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTingkatan() {
+        return tingkatan;
+    }
+
+    public void setTingkatan(String tingkatan) {
+        this.tingkatan = tingkatan;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.uts_pbp_d_kel7.Database;
+package com.example.uts_pbp_d_kel7.database;
 
 import android.content.Context;
 

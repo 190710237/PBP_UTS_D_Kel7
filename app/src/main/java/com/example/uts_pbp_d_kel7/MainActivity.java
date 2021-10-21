@@ -10,9 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.uts_pbp_d_kel7.Model.User;
-import com.example.uts_pbp_d_kel7.Preferences.UserPreferences;
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.uts_pbp_d_kel7.model.User;
+import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 
 public class MainActivity extends AppCompatActivity {
     private UserPreferences userPreferences;

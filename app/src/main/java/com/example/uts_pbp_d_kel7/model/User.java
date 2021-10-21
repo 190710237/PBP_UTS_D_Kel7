@@ -1,4 +1,4 @@
-package com.example.uts_pbp_d_kel7.Model;
+package com.example.uts_pbp_d_kel7.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

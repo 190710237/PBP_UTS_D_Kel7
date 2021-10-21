@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.uts_pbp_d_kel7.Database.DatabaseUser;
-import com.example.uts_pbp_d_kel7.Model.User;
+import com.example.uts_pbp_d_kel7.database.DatabaseUser;
+import com.example.uts_pbp_d_kel7.model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 

@@ -1,4 +1,4 @@
-package com.example.uts_pbp_d_kel7.Dao;
+package com.example.uts_pbp_d_kel7.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,8 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.uts_pbp_d_kel7.Model.Materi;
-import com.example.uts_pbp_d_kel7.Model.User;
+import com.example.uts_pbp_d_kel7.model.Materi;
 
 import java.util.List;
 
