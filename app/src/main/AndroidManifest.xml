@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_PBP_D_Kel7">
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".IsiSubBabActivity"
             android:exported="true" />
         <activity
