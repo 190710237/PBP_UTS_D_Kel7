@@ -13,9 +13,6 @@
             android:name=".EditProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
             android:name=".IsiSubBabActivity"
             android:exported="true" />
         <activity
@@ -36,6 +33,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <receiver android:name=".firebase.NotificationReceiver"/>
     </application>
 
 </manifest>
