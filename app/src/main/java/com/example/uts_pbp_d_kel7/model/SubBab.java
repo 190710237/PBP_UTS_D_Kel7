@@ -3,13 +3,13 @@ package com.example.uts_pbp_d_kel7.model;
 public class SubBab {
     private String bab;
     private String namaBab;
-    private String isiMateri;
+    private String deskripsi;
 
-    public SubBab(String bab, String namaBab, String isiMateri) {
+    public SubBab(String bab, String namaBab, String deskripsi) {
 
         this.bab = bab;
         this.namaBab = namaBab;
-        this.isiMateri = isiMateri;
+        this.deskripsi = deskripsi;
     }
 
     public String getBab() {
@@ -28,11 +28,11 @@ public class SubBab {
         this.namaBab = namaBab;
     }
 
-    public String getIsiMateri() {
-        return isiMateri;
+    public String getDeskripsi() {
+        return deskripsi;
     }
 
-    public void setIsiMateri(String isiMateri) {
-        this.isiMateri = isiMateri;
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 }

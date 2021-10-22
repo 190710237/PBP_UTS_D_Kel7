@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rvMataPelajaran= view.findViewById(R.id.rv_matapelajaran);
         rvMataPelajaran.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
-
         rvMataPelajaran.setAdapter(new RVMataPelajaranAdapter());
     }
 }

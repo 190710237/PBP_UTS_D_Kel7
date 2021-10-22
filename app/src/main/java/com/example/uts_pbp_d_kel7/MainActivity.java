@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                             openFragment(new HomeFragment());
                             return true;
                         case R.id.profile:
-//                            openFragment();
+                            openFragment(new ProfileFragment());
                             return true;
                     }
                     return false;
