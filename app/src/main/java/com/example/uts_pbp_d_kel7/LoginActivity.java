@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout etUsername, etPassword;
     private MaterialButton btnLogin, btnRegister;
     private UserPreferences userPreferences;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -81,4 +80,5 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

@@ -3,6 +3,8 @@ package com.example.uts_pbp_d_kel7;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,16 +14,42 @@ import android.view.MenuItem;
 
 import com.example.uts_pbp_d_kel7.model.User;
 import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private UserPreferences userPreferences;
     private User user;
+    BottomNavigationView bottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userPreferences = new UserPreferences(MainActivity.this);
         user = userPreferences.getUserLogin();
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        openFragment(new HomeFragment());
+    }
+
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.home:
+                            openFragment(new HomeFragment());
+                            return true;
+                        case R.id.profile:
+//                            openFragment();
+                            return true;
+                    }
+                    return false;
+                }
+            };
+    public void openFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.commit();
     }
 
     @Override
