@@ -18,6 +18,12 @@ public class User {
     private String lastname;
     @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "birthdate")
+    private String birthdate;
+    @ColumnInfo(name = "schoolname")
+    private String schoolname;
+    @ColumnInfo(name = "address")
+    private String address;
 
     public User(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
@@ -80,5 +86,29 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getSchoolname() {
+        return schoolname;
+    }
+
+    public void setSchoolname(String schoolname) {
+        this.schoolname = schoolname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
