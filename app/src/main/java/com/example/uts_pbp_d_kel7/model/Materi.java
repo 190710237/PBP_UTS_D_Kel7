@@ -6,6 +6,60 @@ public class Materi {
     public Materi(String subBab) {
         if(subBab.equals("Matriks")){
             konten=Matriks;
+        }else if(subBab.equals("Transformasi Matriks")){
+            konten=TransformasiMatriks;
+        }else if(subBab.equals("Eliminasi Gaus")){
+            konten=EliminasiGaus;
+        }else if(subBab.equals("Perkalian Silang")){
+            konten=PerkalianSilang;
+        }else if(subBab.equals("Rata Rata")){
+            konten=RataRata;
+        }else if(subBab.equals("Median")){
+            konten=Median;
+        }else if(subBab.equals("Modus")){
+            konten=Modus;
+        }else if(subBab.equals("Kuartil")){
+            konten=Kuartil;
+        }else if(subBab.equals("Sequential")){
+            konten=Sequential;
+        }else if(subBab.equals("Seleksi")){
+            konten=Seleksi;
+        }else if(subBab.equals("Perulangan")){
+            konten=Perulangan;
+        }else if(subBab.equals("Array")){
+            konten=Array;
+        }else if(subBab.equals("Select")){
+            konten=Select;
+        }else if(subBab.equals("Insert")){
+            konten=Insert;
+        }else if(subBab.equals("Update")){
+            konten=Update;
+        }else if(subBab.equals("Delete")){
+            konten=Delete;
+        }else if(subBab.equals("Object")){
+            konten=Object;
+        }else if(subBab.equals("Class")){
+            konten=Class;
+        }else if(subBab.equals("Interface")){
+            konten=Interface;
+        }else if(subBab.equals("Abstract")){
+            konten=Abstract;
+        }else if(subBab.equals("Stack")){
+            konten=Stack;
+        }else if(subBab.equals("List")){
+            konten=List;
+        }else if(subBab.equals("Multi List")){
+            konten=MultiList;
+        }else if(subBab.equals("Binary Tree")){
+            konten=BinaryTree;
+        }else if(subBab.equals("HTML")){
+            konten=HTML;
+        }else if(subBab.equals("CSS")){
+            konten=CSS;
+        }else if(subBab.equals("Java Script")){
+            konten=JavaScript;
+        }else if(subBab.equals("PHP")){
+            konten=PHP;
         }
     }
 
