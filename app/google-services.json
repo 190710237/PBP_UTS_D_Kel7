@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "639623316699",
+    "project_id": "uts-pbp-d-kel7",
+    "storage_bucket": "uts-pbp-d-kel7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639623316699:android:ab3ee099e4f9d38bd078fe",
+        "android_client_info": {
+          "package_name": "com.example.uts_pbp_d_kel7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639623316699-b5ms0cvue8a64eqrqd9djkhass8s5g0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOVh72FmUFoxhC9Zzdtymw9RTKMdO9weE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639623316699-b5ms0cvue8a64eqrqd9djkhass8s5g0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
