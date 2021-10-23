@@ -25,11 +25,13 @@ public class RVSubBabAdapter extends RecyclerView.Adapter<RVSubBabAdapter.viewHo
         TextView txtSubBab;
         TextView txtDeskripsi;
         LinearLayout layoutSubBab;
+        TextView txtCourseNumber;
         public viewHolders(@NonNull View itemView){
             super(itemView);
             txtSubBab = itemView.findViewById(R.id.txtSubBab);
             txtDeskripsi = itemView.findViewById(R.id.txtDeskripsi);
             layoutSubBab = itemView.findViewById(R.id.layout_sub_bab);
+            txtCourseNumber = itemView.findViewById(R.id.txtCourseNumber);
         }
     }
 
@@ -47,6 +49,7 @@ public class RVSubBabAdapter extends RecyclerView.Adapter<RVSubBabAdapter.viewHo
     public void onBindViewHolder(@NonNull viewHolders holder, int position) {
         holder.txtSubBab.setText(subBab.get(position).getNamaBab());
         holder.txtDeskripsi.setText(subBab.get(position).getDeskripsi());
+        holder.txtCourseNumber.setText(subBab.get(position).getBab());
         holder.layoutSubBab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

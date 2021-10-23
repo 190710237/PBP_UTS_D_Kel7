@@ -27,11 +27,13 @@ public class RVMataPelajaranAdapter extends RecyclerView.Adapter<RVMataPelajaran
         Chip txtAuthor;
         Chip txtTingkatan;
         LinearLayout layoutMataPelajaran;
+        TextView txtCourseNumber;
         public viewHolder(@NonNull View itemView){
             super(itemView);
             txtMataPelajaran = itemView.findViewById(R.id.txtMataPelajaran);
             txtAuthor = itemView.findViewById(R.id.txtAuthor);
             txtTingkatan = itemView.findViewById(R.id.txtTingkatan);
+            txtCourseNumber = itemView.findViewById(R.id.txtCourseNumber);
             layoutMataPelajaran = itemView.findViewById(R.id.layout_mata_pelajaran);
         }
     }
@@ -47,11 +49,15 @@ public class RVMataPelajaranAdapter extends RecyclerView.Adapter<RVMataPelajaran
         holder.txtMataPelajaran.setText(mataPelajaran.get(position).getMataPelajaran());
         holder.txtAuthor.setText(mataPelajaran.get(position).getAuthor());
         holder.txtTingkatan.setText(mataPelajaran.get(position).getTingkatan());
+        holder.txtCourseNumber.setText(String.valueOf(position + 1));
+        String deskripsi = mataPelajaran.get(position).getDeskripsi();
         holder.layoutMataPelajaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(holder.itemView.getContext(), IsiSubBabActivity.class);
                 intent.putExtra("mataPelajaran",holder.txtMataPelajaran.getText().toString());
+                intent.putExtra("deskripsi",deskripsi);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

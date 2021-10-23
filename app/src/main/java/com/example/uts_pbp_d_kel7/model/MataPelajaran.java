@@ -4,15 +4,24 @@ public class MataPelajaran {
     private String mataPelajaran;
     private String author;
     private String tingkatan;
-
-    public MataPelajaran(String mataPelajaran, String author, String tingkatan) {
+    private String deskripsi;
+    public MataPelajaran(String mataPelajaran, String author, String tingkatan, String deskripsi) {
         this.mataPelajaran = mataPelajaran;
         this.author = author;
         this.tingkatan = tingkatan;
+        this.deskripsi = deskripsi;
     }
 
     public String getMataPelajaran() {
         return mataPelajaran;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 
     public void setMataPelajaran(String mataPelajaran) {

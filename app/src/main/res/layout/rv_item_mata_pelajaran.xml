@@ -22,13 +22,15 @@
             android:orientation="horizontal">
 
             <!-- Media -->
-            <ImageView
+            <TextView
+                android:id="@+id/txtCourseNumber"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:scaleType="centerCrop"/>
-
+                android:background="@drawable/ic_box_round_materials"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textAppearance="?attr/textAppearanceHeadline3"
+                android:text="1"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
