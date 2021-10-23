@@ -22,10 +22,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 public class ProfileFragment extends Fragment{
-    private MaterialTextView txtUsername, txtEmail;
+    private MaterialTextView txtFullname, txtEmail;
     private MaterialTextView txtBirthdate, txtSchoolname;
     private MaterialTextView txtAddress;
-    private MaterialButton btnEdit;
+    private MaterialButton btnEdit, btnBack;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -42,14 +42,15 @@ public class ProfileFragment extends Fragment{
         String getUser = getActivity().getIntent().getStringExtra("username");
         User user = userDao.getLogininfo(getUser);
 
-        txtUsername = view.findViewById(R.id.txtUsername);
+        txtFullname = view.findViewById(R.id.txtFullname);
         txtEmail = view.findViewById(R.id.txtEmail);
         txtBirthdate = view.findViewById(R.id.txtBirthdate);
         txtSchoolname = view.findViewById(R.id.txtSchoolName);
         txtAddress = view.findViewById(R.id.txtAddress);
         btnEdit = view.findViewById(R.id.btnEdit);
+        btnBack = view.findViewById(R.id.btnBack);
 
-        txtUsername.setText(user.getUsername());
+        txtFullname.setText(user.getFirstname()+" "+user.getLastname());
         txtEmail.setText(user.getEmail());
         if(user.getBirthdate()==null){
             txtBirthdate.setText("N/A");
@@ -66,6 +67,16 @@ public class ProfileFragment extends Fragment{
         }else{
             txtAddress.setText(user.getAddress());
         }
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
