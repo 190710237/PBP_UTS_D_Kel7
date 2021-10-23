@@ -39,8 +39,8 @@ public class ProfileFragment extends Fragment{
 
         DatabaseUser databaseUser = DatabaseUser.getInstance(getContext());
         UserDao userDao = databaseUser.getDatabase().userDao();
-        String inUsername = getActivity().getIntent().getStringExtra("username");
-        User user = userDao.getLogininfo(inUsername);
+        String getUser = getActivity().getIntent().getStringExtra("username");
+        User user = userDao.getLogininfo(getUser);
 
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
