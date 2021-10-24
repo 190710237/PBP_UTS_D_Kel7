@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    //cek field kosong & cek password & confirm password
                     if(validateForm()==1){
                         addUser();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
