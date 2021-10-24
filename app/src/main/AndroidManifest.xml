@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uts_pbp_d_kel7">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".firebase.MyApplication"
         android:allowBackup="true"
@@ -12,6 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_PBP_D_Kel7">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".AboutUsActivity"
             android:exported="true" />
@@ -25,7 +30,7 @@
             android:name=".IsiMateriActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +44,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <service android:name=".FireBaseNotif" android:exported="false">
+
+        <service
+            android:name=".FireBaseNotif"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
