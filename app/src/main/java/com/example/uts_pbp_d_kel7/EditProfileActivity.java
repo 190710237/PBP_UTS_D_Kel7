@@ -71,6 +71,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         newDate.set(year, monthOfYear, dayOfMonth);
 
                         user.setBirthdate(dateFormat.format(newDate.getTime()));
+                        etBirthdate.getEditText().setText(dateFormat.format(newDate.getTime()));
                     }
                 }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
                         newCalendar.get(Calendar.DAY_OF_MONTH));
