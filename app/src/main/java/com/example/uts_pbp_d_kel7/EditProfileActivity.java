@@ -59,7 +59,7 @@ public class EditProfileActivity extends AppCompatActivity {
             etAddress.getEditText().setText(user.getAddress());
         }
 
-        etBirthdate.setOnClickListener(new View.OnClickListener() {
+        etBirthdate.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar newCalendar = Calendar.getInstance();
