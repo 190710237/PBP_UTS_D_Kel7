@@ -78,7 +78,7 @@ public class DaftarSubBab {
 
     public static final SubBab Statis1 = new SubBab("1","Rata Rata","Bab ini menjelaskan tentang Rata Rata");
     public static final SubBab Statis2 = new SubBab("2","Median","Bab ini menjelaskan tentang Median");
-    public static final SubBab Statis3 = new SubBab("3","Mode","Bab ini menjelaskan tentang Mode");
+    public static final SubBab Statis3 = new SubBab("3","Modus","Bab ini menjelaskan tentang Modus");
     public static final SubBab Statis4 = new SubBab("4","Kuartil","Bab ini menjelaskan tentang Kuartil");
 
     public static final SubBab Daspro1 = new SubBab("1","Sequential","Bab ini menjelaskan tentang Sequential");

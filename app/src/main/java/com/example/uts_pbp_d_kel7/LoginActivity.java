@@ -39,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String inUsername = etUsername.getEditText().getText().toString();
                 String inPassword = etPassword.getEditText().getText().toString();
+
+                //cek database user
                 if(validateForm(inUsername,inPassword)){
                     DatabaseUser databaseUser = DatabaseUser.getInstance(LoginActivity.this);
                     UserDao userDao = databaseUser.getDatabase().userDao();
@@ -47,12 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,
                                 "Invalid username/password", Toast.LENGTH_SHORT).show();
                     } else {
-                        userPreferences.setLogin(etUsername.getEditText().getText().toString().trim(),
-                                etPassword.getEditText().getText().toString().trim());
+                        userPreferences.setLogin(etUsername.getEditText().getText().toString(),
+                                etPassword.getEditText().getText().toString());
                         checkLogin();
                         String username = user.getUsername();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class)
-                                .putExtra("username", username));
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
                 }
             }
