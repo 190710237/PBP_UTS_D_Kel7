@@ -14,11 +14,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.uts_pbp_d_kel7.adapter.RVMataPelajaranAdapter;
+import com.example.uts_pbp_d_kel7.model.User;
+import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 
 
 public class HomeFragment extends Fragment {
     private TextView txtUsername;
-
+    private UserPreferences userPreferences;
+    private User user;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -27,6 +30,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        userPreferences = new UserPreferences(getActivity());
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         txtUsername = view.findViewById(R.id.txtUserName);
         return view;
@@ -35,7 +39,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String getUser = getActivity().getIntent().getStringExtra("username");
+        user = userPreferences.getUserLogin();
+        String getUser = user.getUsername();
         txtUsername.setText(getUser);
         RecyclerView rvMataPelajaran= view.findViewById(R.id.rv_matapelajaran);
         rvMataPelajaran.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));

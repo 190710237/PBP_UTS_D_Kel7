@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.uts_pbp_d_kel7.dao.UserDao;
 import com.example.uts_pbp_d_kel7.database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.model.User;
+import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -26,7 +27,8 @@ public class ProfileFragment extends Fragment{
     private MaterialTextView txtBirthdate, txtSchoolname;
     private MaterialTextView txtAddress;
     private MaterialButton btnEdit;
-
+    private UserPreferences userPreferences;
+    private User user;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -36,10 +38,11 @@ public class ProfileFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        userPreferences = new UserPreferences(getActivity());
         DatabaseUser databaseUser = DatabaseUser.getInstance(getContext());
         UserDao userDao = databaseUser.getDatabase().userDao();
-        String getUser = getActivity().getIntent().getStringExtra("username");
+        user = userPreferences.getUserLogin();
+        String getUser = user.getUsername();
         User user = userDao.getLogininfo(getUser);
 
         txtFullname = view.findViewById(R.id.txtFullname);
