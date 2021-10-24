@@ -53,28 +53,29 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etEmail"
+            android:id="@+id/etBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Email"
-            app:startIconDrawable="@drawable/ic_baseline_mail_outline_24"
-            app:startIconContentDescription="email">
+            android:layout_marginVertical="10dp"
+            android:hint="Birthdate"
+            app:startIconDrawable="@drawable/ic_baseline_calendar_today_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            >
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="none"
+                android:text="dd-MM-yyyy" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etUsername"
+            android:id="@+id/etSchoolName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Username"
-            app:startIconDrawable="@drawable/ic_baseline_person_outline_24"
+            android:hint="School Name"
+            app:startIconDrawable="@drawable/ic_baseline_school_24"
             app:startIconContentDescription="Username">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -85,37 +86,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etPassword"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Password"
-            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
-            app:endIconMode="password_toggle"
-            >
+            android:hint="Address"
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+            app:startIconContentDescription="Username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Confirm Password"
-            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
-            app:endIconMode="password_toggle"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

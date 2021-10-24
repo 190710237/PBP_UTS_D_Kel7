@@ -22,7 +22,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 public class ProfileFragment extends Fragment{
-    private MaterialTextView txtUsername, txtEmail;
+    private MaterialTextView txtFullname, txtEmail;
     private MaterialTextView txtBirthdate, txtSchoolname;
     private MaterialTextView txtAddress;
     private MaterialButton btnEdit;
@@ -42,14 +42,14 @@ public class ProfileFragment extends Fragment{
         String getUser = getActivity().getIntent().getStringExtra("username");
         User user = userDao.getLogininfo(getUser);
 
-        txtUsername = view.findViewById(R.id.txtUsername);
+        txtFullname = view.findViewById(R.id.txtFullname);
         txtEmail = view.findViewById(R.id.txtEmail);
         txtBirthdate = view.findViewById(R.id.txtBirthdate);
         txtSchoolname = view.findViewById(R.id.txtSchoolName);
         txtAddress = view.findViewById(R.id.txtAddress);
         btnEdit = view.findViewById(R.id.btnEdit);
 
-        txtUsername.setText(user.getUsername());
+        txtFullname.setText(user.getFirstname()+" "+user.getLastname());
         txtEmail.setText(user.getEmail());
         if(user.getBirthdate()==null){
             txtBirthdate.setText("N/A");
@@ -66,6 +66,7 @@ public class ProfileFragment extends Fragment{
         }else{
             txtAddress.setText(user.getAddress());
         }
+
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

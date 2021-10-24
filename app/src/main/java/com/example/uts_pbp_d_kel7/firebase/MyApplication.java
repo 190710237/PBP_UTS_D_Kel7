@@ -9,15 +9,16 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MyApplication extends Application {
     public static final String CHANNEL_1_ID = "channel1";
+    public static final String CHANNEL_2_ID = "channel2";
     @Override
     public void onCreate(){
         super.onCreate();
-        FirebaseMessaging.getInstance().subscribeToTopic("E-Learning");
+        FirebaseMessaging.getInstance().subscribeToTopic("eLearning");
 
         createNotificationChannel();
     }
 
-    private void createNotificationChannel(){
+    private void createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel1 = new NotificationChannel(
                     CHANNEL_1_ID,
@@ -26,9 +27,16 @@ public class MyApplication extends Application {
             );
             channel1.setDescription("This is Channel 1");
 
+            NotificationChannel channel2 = new NotificationChannel(
+                    CHANNEL_2_ID,
+                    "Channel 2",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel2.setDescription("This is Channel 2");
+
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel1);
+            manager.createNotificationChannel(channel2);
         }
-
     }
 }
