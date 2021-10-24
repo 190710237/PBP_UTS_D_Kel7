@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uts_pbp_d_kel7">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
         android:name=".firebase.MyApplication"
         android:allowBackup="true"
@@ -10,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_PBP_D_Kel7">
+        <activity
+            android:name=".AboutUsActivity"
+            android:exported="true" />
         <activity
             android:name=".EditProfileActivity"
             android:exported="true" />
@@ -39,7 +44,8 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
             </intent-filter>
         </service>
-        <receiver android:name=".firebase.NotificationReceiver"/>
+
+        <receiver android:name=".firebase.NotificationReceiver" />
     </application>
 
 </manifest>

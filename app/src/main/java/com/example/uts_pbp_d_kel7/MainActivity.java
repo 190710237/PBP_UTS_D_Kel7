@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.about_us){
-
+            startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure want to exit?")
