@@ -25,7 +25,7 @@ public class ProfileFragment extends Fragment{
     private MaterialTextView txtFullname, txtEmail;
     private MaterialTextView txtBirthdate, txtSchoolname;
     private MaterialTextView txtAddress;
-    private MaterialButton btnEdit, btnBack;
+    private MaterialButton btnEdit;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -48,7 +48,6 @@ public class ProfileFragment extends Fragment{
         txtSchoolname = view.findViewById(R.id.txtSchoolName);
         txtAddress = view.findViewById(R.id.txtAddress);
         btnEdit = view.findViewById(R.id.btnEdit);
-        btnBack = view.findViewById(R.id.btnBack);
 
         txtFullname.setText(user.getFirstname()+" "+user.getLastname());
         txtEmail.setText(user.getEmail());
@@ -68,15 +67,6 @@ public class ProfileFragment extends Fragment{
             txtAddress.setText(user.getAddress());
         }
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
