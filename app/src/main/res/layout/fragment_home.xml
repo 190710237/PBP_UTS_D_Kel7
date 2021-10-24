@@ -24,26 +24,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@color/purple_500">
+                    android:background="@color/primary_blue">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
-                        android:layout_marginEnd="50dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_gravity="center"
                             app:srcCompat="@mipmap/ic_launcher"/>
 
                         <LinearLayout
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:padding="16dp">
@@ -53,7 +53,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="Hallo,"
                                 android:textColor="@color/white"
-                                android:textAppearance="?attr/textAppearanceBody1" />
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:fontFamily="@font/dm_sans_bold"/>
 
                             <TextView
                                 android:id="@+id/txtUserName"
@@ -61,17 +62,10 @@
                                 android:layout_height="wrap_content"
                                 android:text="Nama User"
                                 android:textColor="@color/white"
-                                android:textAppearance="?attr/textAppearanceHeadline6" />
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:fontFamily="@font/dm_sans_bold"/>
 
                         </LinearLayout>
-
-                        <Button
-                            android:id="@+id/menu_button"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            app:icon="@drawable/ic_baseline_menu_24"
-                            style="@style/Widget.App.Button.OutlinedButton.IconOnly"/>
 
                     </LinearLayout>
 

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/home"
         android:enabled="true"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="Home"
+        />
     <item
         android:id="@+id/profile"
         android:enabled="true"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"
         android:icon="@drawable/ic_baseline_person_outline_24"
+        android:iconTint="@color/primary_blue"
         android:title="Profile"/>
 
 </menu>

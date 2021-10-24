@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:id="@+id/option_1"
-        android:icon="@drawable/ic_baseline_info_24"
-        android:title="Developer" />
+        android:title="Developer"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"/>
     <item android:id="@+id/option_2"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"
-        android:title="Logout" />
+        android:title="Logout"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"/>
+
 </menu>

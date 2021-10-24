@@ -38,7 +38,8 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="60dp"
             android:textAlignment="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/inter_black"
             android:text="Developer"
             android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceHeadline3"/>
@@ -50,11 +51,11 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="60dp"
             android:textAlignment="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="Amadeus Ryan Wijaya S."
             android:layout_below="@+id/txtDeveloper"
-            android:textColor="@color/white"
-            android:textAppearance="?attr/textAppearanceHeadline6"/>
+            android:fontFamily="@font/dm_sans_medium"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/txtDev2"
@@ -63,11 +64,11 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="60dp"
             android:textAlignment="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="Cornelius Angga Widi P."
             android:layout_below="@+id/txtDev1"
             android:textColor="@color/white"
-            android:textAppearance="?attr/textAppearanceHeadline6"/>
+            android:fontFamily="@font/dm_sans_medium"/>
 
         <TextView
             android:id="@+id/txtDev3"
@@ -76,21 +77,25 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="60dp"
             android:textAlignment="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:text="Vincent Handoko"
             android:layout_below="@+id/txtDev2"
             android:textColor="@color/white"
-            android:textAppearance="?attr/textAppearanceHeadline6"/>
+            android:fontFamily="@font/dm_sans_medium"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Find Our Office Here :"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"
+            android:fontFamily="@font/inter_black"
             android:layout_below="@id/txtDev3"/>
 
     </RelativeLayout>

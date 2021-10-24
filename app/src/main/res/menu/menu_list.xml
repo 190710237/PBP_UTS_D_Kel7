@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/about_us"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"
         android:title="About Us"/>
 
     <item android:id="@+id/logout"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"
         android:title="Logout"/>
 </menu>
