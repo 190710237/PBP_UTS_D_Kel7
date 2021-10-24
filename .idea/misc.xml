@@ -3,26 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/font/font.xml" value="0.234375" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_about_us.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_edit_profile.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_isi_materi.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_isi_sub_bab.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/rv_item_mata_pelajaran.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/layout/rv_item_sub_bab.xml" value="0.22" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/menu/menu_list.xml" value="0.20416666666666666" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/menu/popup_menu.xml" value="0.2" />
-        <entry key="..\:/03 - Education/Courses/Semester 5/Pemrograman Berbasis Platform/Task/UTS/PBP_UTS_D_Kel7/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2703125" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2703125" />
-        <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_isi_materi.xml" value="0.25416666666666665" />
+        <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_about_us.xml" value="0.264" />
+        <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_isi_materi.xml" value="0.264" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_isi_sub_bab.xml" value="0.25416666666666665" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
@@ -33,6 +17,7 @@
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/menu/menu_list.xml" value="0.25416666666666665" />
         <entry key="..\:/PERKULIAHAN/2. Tugas Kuliah/Sem 5/UTS_PBP_D_Kel7/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
+        <entry key="..\:/VH/Kuliah/Semester 5/Pemrograman Berbasis Platform/Modul 6/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_about_us.xml" value="0.1" />
         <entry key="..\:/VH/Kuliah/Semester 5/Pemrograman Berbasis Platform/Modul 6/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
         <entry key="..\:/VH/Kuliah/Semester 5/Pemrograman Berbasis Platform/Modul 6/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_isi_materi.xml" value="0.184375" />
         <entry key="..\:/VH/Kuliah/Semester 5/Pemrograman Berbasis Platform/Modul 6/PBP_UTS_D_Kel7/app/src/main/res/layout/activity_main.xml" value="0.1" />
