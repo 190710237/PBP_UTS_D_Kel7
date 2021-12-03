@@ -19,6 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout etUsername, etPassword;
     private MaterialButton btnLogin, btnRegister;
     private UserPreferences userPreferences;
+
+    //TODO CONVERT TO VOLLEY
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

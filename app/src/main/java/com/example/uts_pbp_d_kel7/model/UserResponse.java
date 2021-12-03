@@ -9,8 +9,8 @@ public class UserResponse {
 
     //TODO : recheck serialized name with db
 
-    @SerializedName("user")
-    private List<User> userList;
+    @SerializedName("users")
+    private List<User> usersList;
 
     public String getMessage() {
         return message;
@@ -21,10 +21,10 @@ public class UserResponse {
     }
 
     public List<User> getUserList() {
-        return userList;
+        return usersList;
     }
 
     public void setMahasiswaList(List<User> userList) {
-        this.userList = userList;
+        this.usersList = usersList;
     }
 }

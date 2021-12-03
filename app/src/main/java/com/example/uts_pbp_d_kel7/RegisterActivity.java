@@ -19,6 +19,8 @@ public class RegisterActivity extends AppCompatActivity {
     private MaterialButton btnLogin, btnRegister;
     static RegisterActivity instance;
 
+    //TODO CONVERT TO VOLLEY
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
