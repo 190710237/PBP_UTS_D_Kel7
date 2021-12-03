@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "user")
 public class User {
+    //TODO : Convert to volley, remove room db
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "username")
