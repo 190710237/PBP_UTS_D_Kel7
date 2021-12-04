@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_PBP_D_Kel7">
         <activity
+            android:name=".ViewCatatanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CatatanActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
