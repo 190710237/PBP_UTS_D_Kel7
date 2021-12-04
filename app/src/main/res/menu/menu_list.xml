@@ -4,7 +4,10 @@
         android:fontFamily="@font/dm_sans_medium"
         android:textAppearance="?attr/textAppearanceBody1"
         android:title="About Us"/>
-
+    <item android:id="@+id/catatan"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:title="Catatan"/>
     <item android:id="@+id/logout"
         android:fontFamily="@font/dm_sans_medium"
         android:textAppearance="?attr/textAppearanceBody1"

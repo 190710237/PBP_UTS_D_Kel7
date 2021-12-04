@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.about_us){
             startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+        }else if(item.getItemId() == R.id.catatan){
+            startActivity(new Intent(MainActivity.this, CatatanActivity.class));
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure want to exit?")
