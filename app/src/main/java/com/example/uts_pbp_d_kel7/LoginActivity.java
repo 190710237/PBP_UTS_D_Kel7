@@ -1,5 +1,6 @@
 package com.example.uts_pbp_d_kel7;
 
+import static com.android.volley.Request.Method.GET;
 import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
 
@@ -227,7 +228,7 @@ public class LoginActivity extends AppCompatActivity {
     private void verify(int token){
 //        setLoading(true);
 
-        StringRequest stringRequest = new StringRequest(PUT, UserApi.VERIFY+String.valueOf(userPreferences.getUserLogin().getId()),
+        StringRequest stringRequest = new StringRequest(GET, UserApi.VERIFY+String.valueOf(userPreferences.getUserLogin().getId()),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -244,6 +245,8 @@ public class LoginActivity extends AppCompatActivity {
                                 userLogin.getFirstname(), userLogin.getLastname(), userLogin.getEmail(), userLogin.getBirthdate(),
                                 userLogin.getSchoolname(),userLogin.getAddress(),userLogin.getPhoto(),userLogin.getToken(),
                                 userLogin.getVerified());
+
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
                 }, new Response.ErrorListener() {
             @Override
