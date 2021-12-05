@@ -38,9 +38,12 @@
         />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/etIsi"
+        android:layout_width="410dp"
+        android:layout_height="679dp"
         android:hint="Input Here..."
-        android:id="@+id/etIsi"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtJudul" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

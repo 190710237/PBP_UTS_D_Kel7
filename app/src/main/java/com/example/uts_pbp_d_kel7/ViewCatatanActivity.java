@@ -1,6 +1,7 @@
 package com.example.uts_pbp_d_kel7;
 
 import static com.android.volley.Request.Method.GET;
+import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,8 +38,8 @@ import java.util.Map;
 
 
 public class ViewCatatanActivity extends AppCompatActivity {
-    private Button btnSave;
-    private Button btnBack;
+    private ImageButton btnSave;
+    private ImageButton btnBack;
     private TextView tvJudul;
     private EditText etIsi;
     private LinearLayout layoutLoading;
@@ -50,8 +52,8 @@ public class ViewCatatanActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
 
-        btnBack = findViewById(R.id.btnBack);
-        btnSave = findViewById(R.id.btnSave);
+        btnBack = findViewById(R.id.btn_back);
+        btnSave = findViewById(R.id.btn_save);
         tvJudul = findViewById(R.id.txtJudul);
         etIsi = findViewById(R.id.etIsi);
 
@@ -77,7 +79,7 @@ public class ViewCatatanActivity extends AppCompatActivity {
         }
     }
     private void getCatatanById(long id){
-        setLoading(true);
+//        setLoading(true);
         StringRequest stringRequest = new StringRequest(GET, CatatanApi.GET_BY_ID_URL + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -87,12 +89,12 @@ public class ViewCatatanActivity extends AppCompatActivity {
                 tvJudul.setText(catatan.getJudul());
                 etIsi.setText(catatan.getIsi());
                 Toast.makeText(ViewCatatanActivity.this, catatanResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                setLoading(false);
+//                setLoading(false);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                setLoading(false);
+//                setLoading(false);
                 try{
                     String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
                     JSONObject errors = new JSONObject(responseBody);
@@ -115,7 +117,7 @@ public class ViewCatatanActivity extends AppCompatActivity {
     }
 
     private void updateMahasiswa(long id){
-        setLoading(true);
+//        setLoading(true);
         UserPreferences userPreferences = new UserPreferences(this);
         User user = userPreferences.getUserLogin();
         Catatan catatan = new Catatan(
@@ -123,7 +125,7 @@ public class ViewCatatanActivity extends AppCompatActivity {
                 etIsi.getText().toString(),
                 (long) user.getId());
 
-        StringRequest stringRequest = new StringRequest(PUT, CatatanApi.UPDATE_URL + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(POST, CatatanApi.UPDATE_URL + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
@@ -131,12 +133,12 @@ public class ViewCatatanActivity extends AppCompatActivity {
                 CatatanResponse catatanResponse = gson.fromJson(response, CatatanResponse.class);
                 Toast.makeText(ViewCatatanActivity.this,
                         catatanResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                setLoading(false);
+//                setLoading(false);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                setLoading(false);
+//                setLoading(false);
                 try {
                     String responseBody = new String(error.networkResponse.data,
                             StandardCharsets.UTF_8);

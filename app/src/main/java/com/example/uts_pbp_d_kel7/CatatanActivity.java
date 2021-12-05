@@ -66,10 +66,15 @@ private RecyclerView rvCatatan;
 
         layoutLoading = findViewById(R.id.layout_loading);
         srCatatan = findViewById(R.id.sr_catatan);
+        rvCatatan = findViewById(R.id.rv_catatan);
+        adapter = new CatatanAdapter(new ArrayList<>(),this);
+        rvCatatan.setLayoutManager(new LinearLayoutManager(CatatanActivity.this, LinearLayoutManager.VERTICAL,false));
         srCatatan.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 getAllCatatan();
+                rvCatatan.setAdapter(adapter);
             }
         });
 
@@ -81,12 +86,8 @@ private RecyclerView rvCatatan;
             }
         });
 
-        rvCatatan = findViewById(R.id.rv_catatan);
-        adapter = new CatatanAdapter(new ArrayList<>(),this);
         getAllCatatan();
-        rvCatatan.setLayoutManager(new LinearLayoutManager(CatatanActivity.this, LinearLayoutManager.VERTICAL,false));
         rvCatatan.setAdapter(adapter);
-
     }
 
     @Override
