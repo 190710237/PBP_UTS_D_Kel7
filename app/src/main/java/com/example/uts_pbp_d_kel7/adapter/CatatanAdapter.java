@@ -26,7 +26,6 @@ import java.util.List;
 
 public class CatatanAdapter extends RecyclerView.Adapter<CatatanAdapter.ViewHolder> {
     private List<Catatan> catatanList;
-    private UserPreferences userPreferences;
 
     public CatatanAdapter(List<Catatan> catatanList, Context context) {
         this.catatanList = catatanList;
@@ -50,7 +49,6 @@ public class CatatanAdapter extends RecyclerView.Adapter<CatatanAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        userPreferences = new UserPreferences(parent.getContext());
         View view = inflater.inflate(R.layout.rv_item_catatan,parent, false);
         return new ViewHolder(view);
     }
@@ -88,10 +86,9 @@ public class CatatanAdapter extends RecyclerView.Adapter<CatatanAdapter.ViewHold
         });
     }
 
-    public void setCatatanList(List<Catatan> catatanList) {
-        User user = userPreferences.getUserLogin();
+    public void setCatatanList(List<Catatan> catatanList, int idint) {
+        long id = (long) idint;
         List<Catatan> filter = new ArrayList<>();
-        int id = user.getId();
         for(int i = 0; i < catatanList.size(); i++){
             if(catatanList.get(i).getUser_id() == id){
                 filter.add(catatanList.get(i));
