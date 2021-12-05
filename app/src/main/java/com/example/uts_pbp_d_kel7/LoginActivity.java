@@ -76,7 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                         checkLogin();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else{
-                        showCreateDialog();
+                        if(userPreferences.getUserLogin().getUsername()!=null)
+                        {showCreateDialog();}
                     }
 //                    DatabaseUser databaseUser = DatabaseUser.getInstance(LoginActivity.this);
 //                    UserDao userDao = databaseUser.getDatabase().userDao();
@@ -104,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(){
-        setLoading(true);
+//        setLoading(true);
         final String username = etUsername.getEditText().getText().toString();
         final String password = etPassword.getEditText().getText().toString();
 
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast.makeText(LoginActivity.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        setLoading(false);
+//                        setLoading(false);
 
                         userPreferences.setLogin(userLogin.getId(), userLogin.getUsername(), userLogin.getPassword(),
                                 userLogin.getFirstname(), userLogin.getLastname(), userLogin.getEmail(), userLogin.getBirthdate(),
@@ -131,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                setLoading(false);
+//                setLoading(false);
 
                 try{
                     String responseBody = new String(error.networkResponse.data,
@@ -224,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void verify(int token){
-        setLoading(true);
+//        setLoading(true);
 
         StringRequest stringRequest = new StringRequest(PUT, UserApi.VERIFY+String.valueOf(userPreferences.getUserLogin().getId()),
                 new Response.Listener<String>() {
@@ -237,7 +238,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast.makeText(LoginActivity.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        setLoading(false);
+//                        setLoading(false);
 
                         userPreferences.setLogin(userLogin.getId(), userLogin.getUsername(), userLogin.getPassword(),
                                 userLogin.getFirstname(), userLogin.getLastname(), userLogin.getEmail(), userLogin.getBirthdate(),
@@ -247,7 +248,7 @@ public class LoginActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                setLoading(false);
+//                setLoading(false);
 
                 try{
                     String responseBody = new String(error.networkResponse.data,
