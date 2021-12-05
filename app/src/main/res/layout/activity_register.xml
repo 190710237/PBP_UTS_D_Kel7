@@ -155,5 +155,8 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    <include
+        android:id="@+id/layout_loading"
+        layout="@layout/layout_loading"
+        android:visibility="gone" />
 </LinearLayout>

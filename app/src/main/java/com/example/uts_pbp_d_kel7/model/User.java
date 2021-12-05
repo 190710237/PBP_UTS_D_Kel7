@@ -7,25 +7,27 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "user")
 public class User {
     //TODO : Convert to volley, remove room db
-    @PrimaryKey(autoGenerate = true)
+//    @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = "username")
+//    @ColumnInfo(name = "username")
     private String username;
-    @ColumnInfo(name = "password")
+//    @ColumnInfo(name = "password")
     private String password;
-    @ColumnInfo(name = "firstname")
+//    @ColumnInfo(name = "firstname")
     private String firstname;
-    @ColumnInfo(name = "lastname")
+//    @ColumnInfo(name = "lastname")
     private String lastname;
-    @ColumnInfo(name = "email")
+//    @ColumnInfo(name = "email")
     private String email;
-    @ColumnInfo(name = "birthdate")
+//    @ColumnInfo(name = "birthdate")
     private String birthdate;
-    @ColumnInfo(name = "schoolname")
+//    @ColumnInfo(name = "schoolname")
     private String schoolname;
-    @ColumnInfo(name = "address")
+//    @ColumnInfo(name = "address")
     private String address;
+    private String photo;
 
+    //Constructor buat register
     public User(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
         this.password = password;
@@ -37,6 +39,18 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(int id, String username, String password, String firstname, String lastname, String email, String birthdate, String schoolname, String address) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.schoolname = schoolname;
+        this.address = address;
     }
 
     public User(){}
@@ -111,5 +125,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

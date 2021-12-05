@@ -1,23 +1,47 @@
 package com.example.uts_pbp_d_kel7;
 
+import static com.android.volley.Request.Method.POST;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.uts_pbp_d_kel7.api.UserApi;
 import com.example.uts_pbp_d_kel7.database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.model.User;
+import com.example.uts_pbp_d_kel7.model.UserResponse;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.http.POST;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout etFirstname, etLastname, etEmail;
     private TextInputLayout etUsername, etPassword, etConfirmPassword;
     private MaterialButton btnLogin, btnRegister;
+    private LinearLayout layoutLoading;
     static RegisterActivity instance;
+    private RequestQueue queue;
 
     //TODO CONVERT TO VOLLEY
 
@@ -26,12 +50,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        queue = Volley.newRequestQueue(this);
         etFirstname = findViewById(R.id.etFirstName);
         etLastname = findViewById(R.id.etLastName);
         etUsername = findViewById(R.id.etUsername);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        layoutLoading = findViewById(R.id.layout_loading);
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
@@ -77,38 +103,114 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void addUser(){
+        setLoading(true);
         final String firstname = etFirstname.getEditText().getText().toString();
         final String lastname = etLastname.getEditText().getText().toString();
         final String username = etUsername.getEditText().getText().toString();
         final String email  = etEmail.getEditText().getText().toString();
         final String password = etPassword.getEditText().getText().toString();
 
-        class AddUser extends AsyncTask<Void, Void, Void> {
+        User user = new User(username, password, firstname, lastname, email);
+
+        StringRequest stringRequest = new StringRequest(POST, UserApi.REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+
+                        UserResponse userResponse = gson.fromJson(response, UserResponse.class);
+
+                        Toast.makeText(RegisterActivity.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+                        finish();
+
+                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
             @Override
-            protected Void doInBackground(Void... voids) {
-                User user = new User();
-                user.setFirstname(firstname);
-                user.setLastname(lastname);
-                user.setUsername(username);
-                user.setEmail(email);
-                user.setPassword(password);
+            public void onErrorResponse(VolleyError error) {
+                setLoading(false);
 
-                DatabaseUser.getInstance(getApplicationContext())
-                        .getDatabase()
-                        .userDao()
-                        .registerUser(user);
+                try{
+                    String responseBody = new String(error.networkResponse.data,
+                            StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
 
-                return null;
+                    Toast.makeText(RegisterActivity.this,
+                            errors.getString("message"), Toast.LENGTH_LONG).show();
+                } catch (Exception e){
+                    Toast.makeText(RegisterActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            //Header
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+
+            //Body
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                /* Serialisasi data dari java object
+                menjadi JSON string menggunakan Gson */
+                String requestBody = gson.toJson(user);
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
             }
 
             @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-                Toast.makeText(RegisterActivity.this, "Berhasil Register",Toast.LENGTH_SHORT).show();
+            public String getBodyContentType() {
+                return "application/json";
             }
+        };
 
+        //add to queue
+        queue.add(stringRequest);
+//        class AddUser extends AsyncTask<Void, Void, Void> {
+//            @Override
+//            protected Void doInBackground(Void... voids) {
+//                User user = new User();
+//                user.setFirstname(firstname);
+//                user.setLastname(lastname);
+//                user.setUsername(username);
+//                user.setEmail(email);
+//                user.setPassword(password);
+//
+//                DatabaseUser.getInstance(getApplicationContext())
+//                        .getDatabase()
+//                        .userDao()
+//                        .registerUser(user);
+//
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void unused) {
+//                super.onPostExecute(unused);
+//                Toast.makeText(RegisterActivity.this, "Berhasil Register",Toast.LENGTH_SHORT).show();
+//            }
+//
+//        }
+//        AddUser addTodo = new AddUser();
+//        addTodo.execute();
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            layoutLoading.setVisibility(View.GONE);
         }
-        AddUser addTodo = new AddUser();
-        addTodo.execute();
     }
 }
