@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_baseline_delete_24"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#DC3939" />
@@ -22,16 +22,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_baseline_delete_24"
+        android:src="@drawable/ic_baseline_check_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#DC3939" />
 
     <TextView
         android:id="@+id/txtJudul"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Judul"
+        android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_save"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toBottomOf="@+id/btn_save"
@@ -39,11 +40,12 @@
 
     <EditText
         android:id="@+id/etIsi"
-        android:layout_width="410dp"
-        android:layout_height="679dp"
+        android:layout_width="match_parent"
+        android:layout_height="673dp"
         android:hint="Input Here..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtJudul" />
+        app:layout_constraintTop_toBottomOf="@+id/txtJudul"
+        android:gravity="start"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
