@@ -32,17 +32,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit2.http.POST;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout etFirstname, etLastname, etEmail;
     private TextInputLayout etUsername, etPassword, etConfirmPassword;
     private MaterialButton btnLogin, btnRegister;
     private LinearLayout layoutLoading;
-    static RegisterActivity instance;
     private RequestQueue queue;
-
-    //TODO CONVERT TO VOLLEY
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -75,8 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                     //cek field kosong & cek password & confirm password
                     if(validateForm()==1){
                         addUser();
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                        finish();
                     }
                 }
         });
@@ -126,6 +120,9 @@ public class RegisterActivity extends AppCompatActivity {
                         finish();
 
                         setLoading(false);
+
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

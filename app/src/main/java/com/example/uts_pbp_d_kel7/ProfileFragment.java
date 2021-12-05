@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.uts_pbp_d_kel7.model.User;
 import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -26,6 +29,7 @@ public class ProfileFragment extends Fragment{
     private MaterialTextView txtAddress;
     private MaterialButton btnEdit;
     private UserPreferences userPreferences;
+    private ImageView iv_profilePicture;
     private User user;
     public ProfileFragment() {
         // Required empty public constructor
@@ -36,12 +40,24 @@ public class ProfileFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        userPreferences = new UserPreferences(getActivity());
-//        DatabaseUser databaseUser = DatabaseUser.getInstance(getContext());
-//        UserDao userDao = databaseUser.getDatabase().userDao();
-//        user = userPreferences.getUserLogin();
+        userPreferences = new UserPreferences(getActivity().getApplicationContext());
+        user = userPreferences.getUserLogin();
 //        String getUser = user.getUsername();
 //        User user = userDao.getLogininfo(getUser);
+
+        iv_profilePicture = view.findViewById(R.id.iv_profilePicture);
+
+        if(user.getPhoto()==null){
+            Toast.makeText(getActivity().getApplicationContext(), "No image", Toast.LENGTH_SHORT).show();
+            Glide.with(getActivity().getApplicationContext())
+                    .load(R.drawable.no_image)
+                    .into(iv_profilePicture);
+        }else{
+            Glide.with(getActivity().getApplicationContext())
+                    .load(user.getPhoto())
+                    .into(iv_profilePicture);
+        }
+
 
         txtFullname = view.findViewById(R.id.txtFullname);
         txtEmail = view.findViewById(R.id.txtEmail);

@@ -1,5 +1,7 @@
 package com.example.uts_pbp_d_kel7;
 
+import static com.android.volley.Request.Method.POST;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -25,15 +27,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.uts_pbp_d_kel7.api.UserApi;
 import com.example.uts_pbp_d_kel7.model.User;
+import com.example.uts_pbp_d_kel7.model.UserResponse;
+import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
     private TextInputLayout etFirstname, etLastname;
@@ -45,6 +62,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private Bitmap bitmap = null;
     private LinearLayout layoutLoading;
 
+    private UserPreferences userPreferences;
+    private User user;
+    private RequestQueue queue;
+
     private static final int PERMISSION_REQUEST_CAMERA = 100;
     private static final int CAMERA_REQUEST = 0;
     private static final int GALLERY_PICTURE = 1;
@@ -53,7 +74,10 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
+        bitmap = null;
+        userPreferences = new UserPreferences(EditProfileActivity.this);
+        user = userPreferences.getUserLogin();
+        queue = Volley.newRequestQueue(this);
         ivProfilePicture = findViewById(R.id.iv_profilePicture);
         etFirstname = findViewById(R.id.etFirstName);
         etLastname = findViewById(R.id.etLastName);
@@ -63,12 +87,6 @@ public class EditProfileActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnSave = findViewById(R.id.btnSave);
         layoutLoading = findViewById(R.id.layout_loading);
-
-
-//        DatabaseUser databaseUser = DatabaseUser.getInstance(EditProfileActivity.this);
-//        UserDao userDao = databaseUser.getDatabase().userDao();
-//        String getUser = getIntent().getStringExtra("username");
-//        User user = userDao.getLogininfo(getUser);
 
         dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
@@ -117,17 +135,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-//        etFirstname.getEditText().setText(user.getFirstname());
-//        etLastname.getEditText().setText(user.getLastname());
-//        if(user.getBirthdate()!=null){
-//            etBirthdate.getEditText().setText(user.getBirthdate());
-//        }
-//        if(user.getSchoolname()!=null){
-//            etSchoolname.getEditText().setText(user.getSchoolname());
-//        }
-//        if(user.getAddress()!=null){
-//            etAddress.getEditText().setText(user.getAddress());
-//        }
+        etFirstname.getEditText().setText(user.getFirstname());
+        etLastname.getEditText().setText(user.getLastname());
+        if(user.getBirthdate()!=null){
+            etBirthdate.getEditText().setText(user.getBirthdate());
+        }
+        if(user.getSchoolname()!=null){
+            etSchoolname.getEditText().setText(user.getSchoolname());
+        }
+        if(user.getAddress()!=null){
+            etAddress.getEditText().setText(user.getAddress());
+        }
 
         etBirthdate.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +158,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, monthOfYear, dayOfMonth);
 
-//                        user.setBirthdate(dateFormat.format(newDate.getTime()));
+                        user.setBirthdate(dateFormat.format(newDate.getTime()));
                         etBirthdate.getEditText().setText(dateFormat.format(newDate.getTime()));
                     }
                 }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
@@ -161,7 +179,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validateForm()==1){
-//                    updateUser(user);
+                    updateUser();
 //                    String username = user.getUsername();
 //                    startActivity(new Intent(EditProfileActivity.this, MainActivity.class)
 //                            .putExtra("username",username));
@@ -183,40 +201,96 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         return 1;
     }
-    private void updateUser(User user){
+    private void updateUser(){
+        setLoading(true);
+
+        BitmapDrawable drawable = (BitmapDrawable) ivProfilePicture.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+
+        final int id = user.getId();
+        final String username = user.getUsername();
+        final String password = user.getPassword();
+        final String email = user.getEmail();
         final String firstname = etFirstname.getEditText().getText().toString();
         final String lastname = etLastname.getEditText().getText().toString();
         final String birthdate = etBirthdate.getEditText().getText().toString();
         final String schoolname  = etSchoolname.getEditText().getText().toString();
         final String address = etAddress.getEditText().getText().toString();
+        final String photo = bitmapToBase64(bitmap);
+        final int token = user.getToken();
+        final Boolean verified = user.getVerified();
 
-        class UpdateUser extends AsyncTask<Void, Void, Void> {
+        User user = new User(id, username, password, firstname, lastname, email, birthdate,
+                schoolname, address, photo, token, verified);
+
+        StringRequest stringRequest = new StringRequest(POST, UserApi.UPDATE_USER + String.valueOf(id),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+
+                        UserResponse userResponse = gson.fromJson(response, UserResponse.class);
+
+                        Toast.makeText(EditProfileActivity.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        User userEdit = userResponse.getUserList().get(0);
+                        userPreferences.setLogin(userEdit.getId(), userEdit.getUsername(), userEdit.getPassword(),
+                                userEdit.getFirstname(), userEdit.getLastname(), userEdit.getEmail(), userEdit.getBirthdate(),
+                                userEdit.getSchoolname(),userEdit.getAddress(),userEdit.getPhoto(),userEdit.getToken(),
+                                userEdit.getVerified());
+
+                        startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
+                        finish();
+
+                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
             @Override
-            protected Void doInBackground(Void... voids) {
+            public void onErrorResponse(VolleyError error) {
+                setLoading(false);
 
-                user.setFirstname(firstname);
-                user.setLastname(lastname);
-                user.setBirthdate(birthdate);
-                user.setSchoolname(schoolname);
-                user.setAddress(address);
+                try{
+                    String responseBody = new String(error.networkResponse.data,
+                            StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
 
-//                DatabaseUser.getInstance(getApplicationContext())
-//                        .getDatabase()
-//                        .userDao()
-//                        .updateUser(user);
+                    Toast.makeText(EditProfileActivity.this,
+                            errors.getString("message"), Toast.LENGTH_SHORT).show();
 
-                return null;
+                } catch (Exception e){
+                    Toast.makeText(EditProfileActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            //Meanmbahkan header pada request
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
             }
 
+            //Menambahkan request body berupa object User
             @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-                Toast.makeText(EditProfileActivity.this, "Berhasil mengedit data",Toast.LENGTH_SHORT).show();
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                /* Serialisasi data dari java object ProdukResponse
+                menjadi JSON string menggunakan Gson */
+                String requestBody = gson.toJson(user);
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
             }
 
-        }
-        UpdateUser updateUser = new UpdateUser();
-        updateUser.execute();
+            // Mendeklarasikan content type dari request body yang ditambahkan
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+
+        queue.add(stringRequest);
     }
 
     @Override
@@ -257,7 +331,7 @@ public class EditProfileActivity extends AppCompatActivity {
             bitmap = (Bitmap) data.getExtras().get("data");
         }
 
-        bitmap = getResizedBitmap(bitmap, 512);
+        bitmap = getResizedBitmap(bitmap, 256);
         ivProfilePicture.setImageBitmap(bitmap);
     }
 
@@ -280,13 +354,10 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private String bitmapToBase64(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, outputStream);
 
         return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
-
-    //TODO CREATE VOLLEY REQUESTS FOR CRUD
-
 
     private void setLoading(boolean isLoading) {
         if (isLoading) {
