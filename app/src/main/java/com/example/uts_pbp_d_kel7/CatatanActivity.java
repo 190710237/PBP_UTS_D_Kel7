@@ -7,12 +7,15 @@ import static com.android.volley.Request.Method.POST;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,8 +25,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -39,6 +45,7 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +56,7 @@ private SwipeRefreshLayout srCatatan;
 private CatatanAdapter adapter;
 private LinearLayout layoutLoading;
 private RequestQueue queue;
+private RecyclerView rvCatatan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +80,13 @@ private RequestQueue queue;
                 showCreateDialog();
             }
         });
+
+        rvCatatan = findViewById(R.id.rv_catatan);
+        adapter = new CatatanAdapter(new ArrayList<>(),this);
+        getAllCatatan();
+        rvCatatan.setLayoutManager(new LinearLayoutManager(CatatanActivity.this, LinearLayoutManager.VERTICAL,false));
+        rvCatatan.setAdapter(adapter);
+
     }
 
     @Override
@@ -84,13 +99,15 @@ private RequestQueue queue;
 
     private void getAllCatatan(){
         srCatatan.setRefreshing(true);
-
+        UserPreferences userPreferences = new UserPreferences(this);
+        User user = userPreferences.getUserLogin();
         StringRequest stringRequest = new StringRequest(GET, CatatanApi.GET_ALL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Gson gson = new Gson();
                 CatatanResponse catatanResponse = gson.fromJson(response, CatatanResponse.class);
-                adapter.setCatatanList(catatanResponse.getCatatanList());
+                adapter.setCatatanList(catatanResponse.getCatatanList(),user.getId());
                 Toast.makeText(CatatanActivity.this, catatanResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 srCatatan.setRefreshing(false);
             }
@@ -98,7 +115,9 @@ private RequestQueue queue;
             @Override
             public void onErrorResponse(VolleyError error) {
                 srCatatan.setRefreshing(false);
+
                 try{
+
                     String responseBody = new String(error.networkResponse.data,
                             StandardCharsets.UTF_8);
                     JSONObject errors = new JSONObject(responseBody);
@@ -117,7 +136,6 @@ private RequestQueue queue;
                 return headers;
             }
         };
-
         queue.add(stringRequest);
     }
 
@@ -209,6 +227,7 @@ private RequestQueue queue;
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                setLoading(false);
                 try{
                     String responseBody = new String(error.networkResponse.data,
                             StandardCharsets.UTF_8);
