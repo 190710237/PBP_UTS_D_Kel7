@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user")
+//@Entity(tableName = "user")
 public class User {
     //TODO : Convert to volley, remove room db
 //    @PrimaryKey(autoGenerate = true)
@@ -26,6 +26,8 @@ public class User {
 //    @ColumnInfo(name = "address")
     private String address;
     private String photo;
+    private int token;
+    private Boolean verified;
 
     //Constructor buat register
     public User(String username, String password, String firstname, String lastname, String email) {
@@ -41,7 +43,8 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String username, String password, String firstname, String lastname, String email, String birthdate, String schoolname, String address) {
+    public User(int id, String username, String password, String firstname, String lastname, String email, String birthdate,
+                String schoolname, String address, String photo, int token, Boolean verified) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -51,6 +54,9 @@ public class User {
         this.birthdate = birthdate;
         this.schoolname = schoolname;
         this.address = address;
+        this.photo = photo;
+        this.token = token;
+        this.verified = verified;
     }
 
     public User(){}
@@ -133,5 +139,21 @@ public class User {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public int getToken() {
+        return token;
+    }
+
+    public void setToken(int token) {
+        this.token = token;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 }

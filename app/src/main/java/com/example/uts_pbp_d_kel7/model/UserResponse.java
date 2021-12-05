@@ -9,7 +9,7 @@ public class UserResponse {
 
     //TODO : recheck serialized name with db
 
-    @SerializedName("users")
+    @SerializedName("user")
     private List<User> usersList;
 
     public String getMessage() {

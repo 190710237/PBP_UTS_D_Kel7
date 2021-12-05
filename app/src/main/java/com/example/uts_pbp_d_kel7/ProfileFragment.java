@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.uts_pbp_d_kel7.dao.UserDao;
-import com.example.uts_pbp_d_kel7.database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.model.User;
 import com.example.uts_pbp_d_kel7.preferences.UserPreferences;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -39,11 +37,11 @@ public class ProfileFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         userPreferences = new UserPreferences(getActivity());
-        DatabaseUser databaseUser = DatabaseUser.getInstance(getContext());
-        UserDao userDao = databaseUser.getDatabase().userDao();
-        user = userPreferences.getUserLogin();
-        String getUser = user.getUsername();
-        User user = userDao.getLogininfo(getUser);
+//        DatabaseUser databaseUser = DatabaseUser.getInstance(getContext());
+//        UserDao userDao = databaseUser.getDatabase().userDao();
+//        user = userPreferences.getUserLogin();
+//        String getUser = user.getUsername();
+//        User user = userDao.getLogininfo(getUser);
 
         txtFullname = view.findViewById(R.id.txtFullname);
         txtEmail = view.findViewById(R.id.txtEmail);

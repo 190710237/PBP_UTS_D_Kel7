@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.uts_pbp_d_kel7.api.UserApi;
-import com.example.uts_pbp_d_kel7.database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.model.User;
 import com.example.uts_pbp_d_kel7.model.UserResponse;
 import com.google.android.material.button.MaterialButton;
@@ -174,33 +173,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         //add to queue
         queue.add(stringRequest);
-//        class AddUser extends AsyncTask<Void, Void, Void> {
-//            @Override
-//            protected Void doInBackground(Void... voids) {
-//                User user = new User();
-//                user.setFirstname(firstname);
-//                user.setLastname(lastname);
-//                user.setUsername(username);
-//                user.setEmail(email);
-//                user.setPassword(password);
-//
-//                DatabaseUser.getInstance(getApplicationContext())
-//                        .getDatabase()
-//                        .userDao()
-//                        .registerUser(user);
-//
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Void unused) {
-//                super.onPostExecute(unused);
-//                Toast.makeText(RegisterActivity.this, "Berhasil Register",Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
-//        AddUser addTodo = new AddUser();
-//        addTodo.execute();
     }
 
     private void setLoading(boolean isLoading) {

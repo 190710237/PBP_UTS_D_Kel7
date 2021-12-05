@@ -22,6 +22,8 @@ public class UserPreferences {
     public static final String KEY_SCHOOLNAME = "schoolname";
     public static final String KEY_ADDRESS = "address";
     public static final String KEY_PHOTO = "photo";
+    public static final String KEY_TOKEN = "token";
+    public static final String IS_VERIFIED = "verified";
 
     public UserPreferences(Context context){
         this.context = context;
@@ -31,7 +33,7 @@ public class UserPreferences {
     }
 
     public void setLogin(int id, String username, String password, String firstname, String lastname, String email,
-                         String birthdate, String schoolname, String address, String photo) {
+                         String birthdate, String schoolname, String address, String photo, int token, boolean verified) {
         //Menyimpan data login ke sharedPreferences dengan key dan value
         editor.putBoolean(IS_LOGIN,true);
         editor.putInt(KEY_ID, id);
@@ -44,6 +46,8 @@ public class UserPreferences {
         editor.putString(KEY_SCHOOLNAME,schoolname);
         editor.putString(KEY_ADDRESS,address);
         editor.putString(KEY_PHOTO,photo);
+        editor.putInt(KEY_TOKEN, token);
+        editor.putBoolean(IS_VERIFIED, verified);
 
         //jangan lupa commit
         editor.commit();
@@ -55,6 +59,8 @@ public class UserPreferences {
         String username,password;
         String firstname,lastname;
         String email, birthdate, schoolname, address,photo;
+        int token;
+        Boolean verified;
 
         id = sharedPreferences.getInt(KEY_ID, -1);
         username = sharedPreferences.getString(KEY_USERNAME,null);
@@ -66,8 +72,10 @@ public class UserPreferences {
         schoolname = sharedPreferences.getString(KEY_SCHOOLNAME, null);
         address = sharedPreferences.getString(KEY_ADDRESS, null);
         photo = sharedPreferences.getString(KEY_PHOTO, null);
+        token = sharedPreferences.getInt(KEY_TOKEN, -1);
+        verified = sharedPreferences.getBoolean(IS_VERIFIED, false);
 
-        return new User(username,password);
+        return new User(id,username,password,firstname,lastname,email,birthdate,schoolname,address,photo,token,verified);
     }
 
     public boolean checkLogin(){

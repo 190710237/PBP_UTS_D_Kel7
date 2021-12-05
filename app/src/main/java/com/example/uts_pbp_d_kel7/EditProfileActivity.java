@@ -25,8 +25,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.uts_pbp_d_kel7.dao.UserDao;
-import com.example.uts_pbp_d_kel7.database.DatabaseUser;
 import com.example.uts_pbp_d_kel7.model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -67,10 +65,10 @@ public class EditProfileActivity extends AppCompatActivity {
         layoutLoading = findViewById(R.id.layout_loading);
 
 
-        DatabaseUser databaseUser = DatabaseUser.getInstance(EditProfileActivity.this);
-        UserDao userDao = databaseUser.getDatabase().userDao();
-        String getUser = getIntent().getStringExtra("username");
-        User user = userDao.getLogininfo(getUser);
+//        DatabaseUser databaseUser = DatabaseUser.getInstance(EditProfileActivity.this);
+//        UserDao userDao = databaseUser.getDatabase().userDao();
+//        String getUser = getIntent().getStringExtra("username");
+//        User user = userDao.getLogininfo(getUser);
 
         dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
@@ -119,17 +117,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        etFirstname.getEditText().setText(user.getFirstname());
-        etLastname.getEditText().setText(user.getLastname());
-        if(user.getBirthdate()!=null){
-            etBirthdate.getEditText().setText(user.getBirthdate());
-        }
-        if(user.getSchoolname()!=null){
-            etSchoolname.getEditText().setText(user.getSchoolname());
-        }
-        if(user.getAddress()!=null){
-            etAddress.getEditText().setText(user.getAddress());
-        }
+//        etFirstname.getEditText().setText(user.getFirstname());
+//        etLastname.getEditText().setText(user.getLastname());
+//        if(user.getBirthdate()!=null){
+//            etBirthdate.getEditText().setText(user.getBirthdate());
+//        }
+//        if(user.getSchoolname()!=null){
+//            etSchoolname.getEditText().setText(user.getSchoolname());
+//        }
+//        if(user.getAddress()!=null){
+//            etAddress.getEditText().setText(user.getAddress());
+//        }
 
         etBirthdate.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +140,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, monthOfYear, dayOfMonth);
 
-                        user.setBirthdate(dateFormat.format(newDate.getTime()));
+//                        user.setBirthdate(dateFormat.format(newDate.getTime()));
                         etBirthdate.getEditText().setText(dateFormat.format(newDate.getTime()));
                     }
                 }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
@@ -163,10 +161,10 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validateForm()==1){
-                    updateUser(user);
-                    String username = user.getUsername();
-                    startActivity(new Intent(EditProfileActivity.this, MainActivity.class)
-                            .putExtra("username",username));
+//                    updateUser(user);
+//                    String username = user.getUsername();
+//                    startActivity(new Intent(EditProfileActivity.this, MainActivity.class)
+//                            .putExtra("username",username));
                 }
             }
         });
@@ -202,10 +200,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 user.setSchoolname(schoolname);
                 user.setAddress(address);
 
-                DatabaseUser.getInstance(getApplicationContext())
-                        .getDatabase()
-                        .userDao()
-                        .updateUser(user);
+//                DatabaseUser.getInstance(getApplicationContext())
+//                        .getDatabase()
+//                        .userDao()
+//                        .updateUser(user);
 
                 return null;
             }
