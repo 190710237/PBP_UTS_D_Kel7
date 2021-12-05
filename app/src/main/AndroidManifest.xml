@@ -53,13 +53,13 @@
             android:name=".MainActivity"
             android:exported="true" />
 
-        <service
-            android:name=".FireBaseNotif"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+<!--        <service-->
+<!--            android:name=".FireBaseNotif"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
         <receiver android:name=".firebase.NotificationReceiver" />
     </application>
