@@ -52,14 +52,14 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(1500));
 
         ViewInteraction textInputEditText = onView(
                 allOf(childAtPosition(
                         childAtPosition(
                                 withId(R.id.etFirstName),
                                 0),
-                        1),
+                        0),
                         isDisplayed()));
         textInputEditText.perform(replaceText("cornelius"), closeSoftKeyboard());
 
@@ -75,7 +75,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton2.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(1000));
 
         ViewInteraction textInputEditText2 = onView(
                 allOf(childAtPosition(
@@ -88,14 +88,14 @@ public class RegisterActivityTest2 {
 
 
 
-        ViewInteraction textInputEditText3 = onView(
-                allOf(childAtPosition(
-                        childAtPosition(
-                                withId(R.id.etEmail),
-                                0),
-                        1),
-                        isDisplayed()));
-        textInputEditText3.perform(click());
+//        ViewInteraction textInputEditText3 = onView(
+//                allOf(childAtPosition(
+//                        childAtPosition(
+//                                withId(R.id.etEmail),
+//                                0),
+//                        1),
+//                        isDisplayed()));
+//        textInputEditText3.perform(click());
 
 
 
@@ -109,7 +109,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton3.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(1000));
 
         ViewInteraction textInputEditText4 = onView(
                 allOf(childAtPosition(
@@ -125,7 +125,7 @@ public class RegisterActivityTest2 {
                         childAtPosition(
                                 withId(R.id.etEmail),
                                 0),
-                        1),
+                        0),
                         isDisplayed()));
         textInputEditText5.perform(replaceText("endertroller"), closeSoftKeyboard());
 
@@ -141,7 +141,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton4.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(1000));
 
         ViewInteraction textInputEditText6 = onView(
                 allOf(childAtPosition(
@@ -164,7 +164,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton5.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(1000));
 
         ViewInteraction textInputEditText7 = onView(
                 allOf(childAtPosition(
@@ -197,7 +197,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton6.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(4000));
 
         ViewInteraction textInputEditText9 = onView(
                 allOf(childAtPosition(
@@ -213,7 +213,7 @@ public class RegisterActivityTest2 {
                         childAtPosition(
                                 withId(R.id.etConfirmPassword),
                                 0),
-                        1),
+                        0),
                         isDisplayed()));
         textInputEditText10.perform(replaceText("098765"), closeSoftKeyboard());
 
@@ -223,7 +223,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etConfirmPassword),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText11.perform(pressImeActionButton());
 
@@ -239,7 +239,7 @@ public class RegisterActivityTest2 {
                                 6),
                         isDisplayed()));
         materialButton7.perform(click());
-        onView(isRoot()).perform(waitFor(5000));
+        onView(isRoot()).perform(waitFor(3000));
 
         ViewInteraction textInputEditText12 = onView(
                 allOf(withText("098765"),
@@ -247,7 +247,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etConfirmPassword),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText12.perform(click());
 
@@ -257,7 +257,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etConfirmPassword),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText13.perform(replaceText("123456"));
 
@@ -267,7 +267,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etConfirmPassword),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText14.perform(closeSoftKeyboard());
 
@@ -310,7 +310,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etEmail),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText17.perform(replaceText("vincenthandoko288@gmail.com"));
 
@@ -320,7 +320,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etEmail),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText18.perform(closeSoftKeyboard());
 
@@ -343,7 +343,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etEmail),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText19.perform(click());
 
@@ -353,7 +353,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etEmail),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText20.perform(replaceText("endertroller288@gmail.com"));
 
@@ -363,7 +363,7 @@ public class RegisterActivityTest2 {
                                 childAtPosition(
                                         withId(R.id.etEmail),
                                         0),
-                                1),
+                                0),
                         isDisplayed()));
         textInputEditText21.perform(closeSoftKeyboard());
 
